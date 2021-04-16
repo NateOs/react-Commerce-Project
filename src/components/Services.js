@@ -7,7 +7,7 @@ const Services = () => {
     <div className="section-center">
       <article className="header">
         <h3>custom furniture <br />
-        built only for your</h3>
+        built only for you</h3>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt labore a hic aut architecto optio repellat at sequi voluptatem aspernatur.</p>
       </article>
       <div className="services-center">
