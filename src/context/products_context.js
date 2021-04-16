@@ -51,10 +51,10 @@ export const ProductsProvider = ({ children }) => {
     
   }
 
-  const fetchSingleProduct = async (single_url) => {
+  const fetchSingleProduct = async (URL) => {
       dispatch({ type: GET_SINGLE_PRODUCT_BEGIN })
     try {
-      const response = await axios.get(single_product_url)
+      const response = await axios.get(URL)
       const single_product = response.data
       console.log(single_product);
       dispatch({ type: GET_SINGLE_PRODUCT_SUCCESS, payload: single_product })
@@ -67,7 +67,7 @@ export const ProductsProvider = ({ children }) => {
 
   useEffect(() => {
     fetchProducts(url)
-    fetchSingleProduct(single_product_url)
+    // fetchSingleProduct(single_product_url)
   }, [])
 
   return (
