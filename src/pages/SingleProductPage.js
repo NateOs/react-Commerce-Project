@@ -24,7 +24,7 @@ const SingleProductPage = () => {
     fetchSingleProduct(`${url}${id}`)
   }, [])
 
-  //* if error go back to home in 3s
+  //* if error go back to /home in 3s
   useEffect(() => {
     if (error) {
       setTimeout(() => {
@@ -32,7 +32,7 @@ const SingleProductPage = () => {
       }, 3000)
     }
   }, [error])
-
+ 
   if (loading) {
      return <Loading />
   }
