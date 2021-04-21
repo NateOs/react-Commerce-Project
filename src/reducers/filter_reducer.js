@@ -10,7 +10,11 @@ import {
 } from '../actions'
 
 const filter_reducer = (state, action) => {
-  return state
+
+  if (action.type === LOAD_PRODUCTS) {
+    // this time we dont directly assign the state values to prevent a gotcha, we spread instead
+    return {...state,  all_products : [...action.payload], filter_products: [...action.payload]} 
+  }
   throw new Error(`No Matching "${action.type}" - action type`)
 }
 

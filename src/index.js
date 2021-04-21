@@ -10,6 +10,9 @@ import { Auth0Provider } from '@auth0/auth0-react'
 
 ReactDOM.render(
     <ProductsProvider>
-        <App />
+        {/* Wrapping FilterProvider into Products provider allows access to products context, where we get all products*/}
+        <FilterProvider>
+            <App />
+        </FilterProvider>
     </ProductsProvider>
     , document.getElementById('root'))
