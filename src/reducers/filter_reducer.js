@@ -16,13 +16,15 @@ const filter_reducer = (state, action) => {
 	}
 
 	if (action.type === SET_GRIDVIEW) {
-		// this time we dont directly assign the state values to prevent a gotcha, we spread instead
 		return { ...state, grid_view: true };
 	}
 
 	if (action.type === SET_LISTVIEW) {
-		// this time we dont directly assign the state values to prevent a gotcha, we spread instead
 		return { ...state, grid_view: false };
+	}
+
+	if (action.type === UPDATE_SORT) {
+		return { ...state, sort: action.payload };
 	}
 	throw new Error(`No Matching "${action.type}" - action type`);
 };
