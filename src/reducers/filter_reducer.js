@@ -9,6 +9,7 @@ import {
 	CLEAR_FILTERS,
 } from '../actions';
 
+
 const filter_reducer = (state, action) => {
 	if (action.type === LOAD_PRODUCTS) {
 		// this time we dont directly assign the state values to prevent a gotcha, we spread instead
@@ -25,6 +26,41 @@ const filter_reducer = (state, action) => {
 
 	if (action.type === UPDATE_SORT) {
 		return { ...state, sort: action.payload };
+	}
+
+	if (action.type === SORT_PRODUCTS) {
+		const { sort, filter_products } = state;
+		const tempProductsFiltered = filter_products;
+
+		if (sort === 'price-lowest') {
+			tempProductsFiltered.sort((a, b) => a.price - b.price);
+		}
+		if (sort === 'price-highest') {
+			tempProductsFiltered.sort((a, b) => b.price - a.price);
+		}
+		if (sort === 'name-a') {
+			tempProductsFiltered.sort((a, b) => {
+				var nameA = a.name.toUpperCase();
+				var nameB = b.name.toUpperCase();
+				if (nameA < nameB) {
+					return -1;
+				}
+			});
+		}
+		if (sort === 'name-z') {
+			tempProductsFiltered.sort((a, b) => {
+				var nameA = a.name.toUpperCase();
+				var nameB = b.name.toUpperCase();
+				if (nameA > nameB) {
+					return -1;
+				}
+			});
+		}
+		// if (sort === 'name-z') {
+		// 	tempProductsFiltered.sort((a, b) => b.name > a.name);
+		// }
+
+		return { ...state, filter_products: tempProductsFiltered };
 	}
 	throw new Error(`No Matching "${action.type}" - action type`);
 };
