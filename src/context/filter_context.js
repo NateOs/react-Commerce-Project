@@ -71,12 +71,16 @@ export const FilterProvider = ({ children }) => {
 			//* Number function is used to return the int value as its string value from the jsx being assigned to state.filter.price
 			value = Number(e.target.value);
 		}
+		if (name === 'shipping') {
+			//* Number function is used to return the int value as its string value from the jsx being assigned to state.filter.price
+			value = e.target.checked
+		}
 		dispatch({ type: UPDATE_FILTERS, payload: { name, value } });
 		console.log(name, value);
 	};
 
-	const clearFilter = (e) => {
-		console.log(e.target.value);
+	const clearFilters = (e) => {
+		dispatch({ type: CLEAR_FILTERS })
 	};
 
 	//* updating the in-state sort value
@@ -89,7 +93,7 @@ export const FilterProvider = ({ children }) => {
 
 	return (
 		<FilterContext.Provider
-			value={{ ...state, setGridView, setListView, updateSort, updateFilters, clearFilter }}>
+			value={{ ...state, setGridView, setListView, updateSort, updateFilters, clearFilters }}>
 			{children}
 		</FilterContext.Provider>
 	);
