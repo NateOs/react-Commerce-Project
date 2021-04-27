@@ -60,7 +60,8 @@ export const FilterProvider = ({ children }) => {
 		let name = e.target.name;
 		let value = e.target.value;
 		if (name === 'category') {
-			value = e.target.textContent
+			//* we grab the text of off the button, so we can assign its value
+			value = e.target.textContent;
 		}
 		dispatch({ type: UPDATE_FILTERS, payload: { name, value } });
 		console.log(name, value);
