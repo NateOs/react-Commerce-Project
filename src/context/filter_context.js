@@ -63,6 +63,10 @@ export const FilterProvider = ({ children }) => {
 			//* we grab the text of off the button, so we can assign its value
 			value = e.target.textContent;
 		}
+		if (name === 'color') {
+			//* we grab the color of off the color button with dataset
+			value = e.target.dataset.color;
+		}
 		dispatch({ type: UPDATE_FILTERS, payload: { name, value } });
 		console.log(name, value);
 	};
