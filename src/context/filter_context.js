@@ -67,6 +67,10 @@ export const FilterProvider = ({ children }) => {
 			//* we grab the color of off the color button with dataset
 			value = e.target.dataset.color;
 		}
+		if (name === 'price') {
+			//* Number function is used to return the int value as its string value from the jsx being assigned to state.filter.price
+			value = Number(e.target.value);
+		}
 		dispatch({ type: UPDATE_FILTERS, payload: { name, value } });
 		console.log(name, value);
 	};
