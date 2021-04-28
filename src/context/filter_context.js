@@ -73,14 +73,14 @@ export const FilterProvider = ({ children }) => {
 		}
 		if (name === 'shipping') {
 			//* Number function is used to return the int value as its string value from the jsx being assigned to state.filter.price
-			value = e.target.checked
+			value = e.target.checked;
 		}
 		dispatch({ type: UPDATE_FILTERS, payload: { name, value } });
 		console.log(name, value);
 	};
 
 	const clearFilters = (e) => {
-		dispatch({ type: CLEAR_FILTERS })
+		dispatch({ type: CLEAR_FILTERS });
 	};
 
 	//* updating the in-state sort value
