@@ -16,7 +16,9 @@ if (cart.length < 1) {
 }
 return <main>
   <PageHero title='cart'/>
-  <Wrapper className='page'></Wrapper>
+  <Wrapper className='page'>
+    <CartContent/>
+  </Wrapper>
 </main>
   
 }
