@@ -9,7 +9,7 @@ import {
 const cart_reducer = (state, action) => {
 	if (action.type === ADD_TO_CART) {
 		const { id, color, amount, product } = action.payload;
-		const tempItem = state.cart.find((item) => item.id === color + id);
+		const tempItem = state.cart.find((item) => item.id === id + color);
 		//* if item exist increase amount of item in cart
 		if (tempItem) {
 			const tempCart = state.cart.map((cartItem) => {
@@ -27,7 +27,7 @@ const cart_reducer = (state, action) => {
 		} else {
 			//* if item does not exist, add newItem
 			const newItem = {
-				id: color + id,
+				id: id + color,
 				name: product.name,
 				color,
 				amount,
