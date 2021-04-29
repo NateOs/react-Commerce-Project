@@ -9,6 +9,15 @@ import {
 } from "../actions";
 // import { initialAuthState } from '@auth0/auth0-react/dist/auth-state';
 
+const getLocalStorage = () => {
+	let cart = localStorage.getItem('cart')
+	if (cart) {
+		return JSON.parse(localStorage.getItem('cart'))
+	} else {
+		return []
+	}
+}
+
 const initialState = {
 	cart: [],
 	total_items: 0,
@@ -32,6 +41,11 @@ export const CartProvider = ({ children }) => {
 	const toggleAmount = (id, value) => {};
 	//* clearCart
 	const clearCart = () => {};
+
+	//* update cart in storage when cart changes
+	useEffect(() => {
+		localStorage.setItem("cart", JSON.stringify(state.cart));
+	}, [state.cart]);
 
 	return (
 		<CartContext.Provider
