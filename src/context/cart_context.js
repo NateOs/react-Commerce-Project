@@ -10,16 +10,16 @@ import {
 // import { initialAuthState } from '@auth0/auth0-react/dist/auth-state';
 
 const getLocalStorage = () => {
-	let cart = localStorage.getItem('cart')
+	let cart = localStorage.getItem("cart");
 	if (cart) {
-		return JSON.parse(localStorage.getItem('cart'))
+		return JSON.parse(localStorage.getItem("cart"));
 	} else {
-		return []
+		return [];
 	}
-}
+};
 
 const initialState = {
-	cart: [],
+	cart: getLocalStorage(),
 	total_items: 0,
 	total_amount: 0,
 	shipping_fee: 534,
@@ -36,11 +36,17 @@ export const CartProvider = ({ children }) => {
 	};
 
 	//* removeFromCart
-	const removeItem = (id) => {};
+	const removeItem = (id) => {
+		dispatch({ type: REMOVE_CART_ITEM, payload: id });
+	};
+
 	//* toggleAmount
 	const toggleAmount = (id, value) => {};
+	
 	//* clearCart
-	const clearCart = () => {};
+	const clearCart = () => {
+		dispatch({ type: CLEAR_CART });
+	};
 
 	//* update cart in storage when cart changes
 	useEffect(() => {
@@ -49,7 +55,7 @@ export const CartProvider = ({ children }) => {
 
 	return (
 		<CartContext.Provider
-			value={{ ...state, addToCart, removeItem, toggleAmount, clearCart }}>
+			value={{ ...state, addToCart, toggleAmount, removeItem, clearCart }}>
 			{children}
 		</CartContext.Provider>
 	);
