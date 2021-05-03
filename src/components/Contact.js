@@ -7,7 +7,7 @@ const Contact = () => {
       <h3>Join our news letter for 20% off</h3>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio quos magni deleniti dicta, hic aspernatur perferendis fugiat exercitationem. Dignissimos sapiente autem, quisquam ipsum in nihil error fuga tempore pariatur facere.</p>
       <form action="https://formspree.io/f/mnqlnqry" method='POST' className="contact-form">
-        <input type="email" className='form-input' placeholder='enter email' name='email'/>
+        <input type="email" className='form-input' placeholder='enter email' name='email' required/>
         <button className="submit-btn" type='submit'>subscribe</button>
       </form>
     </div>
