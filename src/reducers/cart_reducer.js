@@ -76,16 +76,19 @@ const cart_reducer = (state, action) => {
 	}
 
 	if (action.type === COUNT_CART_TOTALS) {
-		const totals = state.cart.map((item) => item.amount * item.price);
-		const sumTotal = totals.reduce((total, item) => {
-			return total + item;
-		}, 0);
-
-		const quantity = state.cart.map((item) => item.amount);
-		const qTotal = quantity.reduce((total, item) => {
-			return total + item;
-		}, 0);
-		return { ...state, total_amount: sumTotal, total_items: qTotal };
+		const { total_items, total_amount } = state.cart.reduce(
+			(total, cartItem) => {
+				const { amount, price } = cartItem;
+				total.total_items += amount;
+				total.total_amount += price;
+				return total;
+			},
+			{
+				total_items: 0,
+				total_amount: 0,
+			},
+		);
+		return { ...state, total_amount: total_amount, total_items: total_items };
 	}
 
 	throw new Error(`No Matching "${action.type}" - action type`);
