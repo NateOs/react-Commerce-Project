@@ -24,9 +24,9 @@ function App() {
         <Route exact path='/cartpage'>
           <CartPage />
         </Route>
-        <Route exact path='/checkout'>
+        <PrivateRoute exact path='/checkout'>
           <Checkout />
-        </Route>
+        </PrivateRoute>
         <Route exact path='*'>
           <ErrorPage />
         </Route>
