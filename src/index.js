@@ -12,7 +12,8 @@ ReactDOM.render(
 	<Auth0Provider
 		domain="dev-r5-tir1y.us.auth0.com"
 		clientId="9jCcYBkNUESKNbi3klioZ4pCMTsjnN7d"
-		redirectUri={window.location.origin}>
+		redirectUri={window.location.origin}
+		cacheLocation='localstorage'>
 		<UserProvider>
 			<ProductsProvider>
 				{/* Wrapping FilterProvider into Products provider allows filterProvider access to products context, where we get all products*/}
