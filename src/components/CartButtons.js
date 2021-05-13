@@ -13,7 +13,6 @@ const CartButtons = () => {
 		loginWithRedirect,
 		myUser,
 		logout,
-		isAuthenticated,
 	} = useUserContext();
 
 	return (

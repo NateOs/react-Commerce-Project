@@ -3,8 +3,7 @@ import React, { useContext, useEffect, useReducer } from 'react';
 import reducer from '../reducers/products_reducer';
 import {
 	products_url as url,
-	single_product_url,
-	single_product_url as single_url,
+	// single_product_url as single_url,
 } from '../utils/constants';
 import {
 	SIDEBAR_OPEN,

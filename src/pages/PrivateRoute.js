@@ -2,7 +2,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 // will remove later
-import { useUserContext } from "../context/user_context";
+// import { useUserContext } from "../context/user_context";
 
 const PrivateRoute = ({ children, ...rest }) => {
 	const { user } = useAuth0();
