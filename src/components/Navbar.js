@@ -9,7 +9,7 @@ import { useProductsContext } from "../context/products_context";
 import { useUserContext } from "../context/user_context";
 
 const Nav = () => {
-	const { openSidebar } = useProductsContext();
+	const { openSidebar, closeSidebar, isSidebarOpen } = useProductsContext();
 	const { myUser } = useUserContext();
 	return (
 		<NavContainer>
@@ -18,9 +18,15 @@ const Nav = () => {
 					<Link to="/">
 						<img src={logo} alt="comfy sloth" />
 					</Link>
-					<button type="button" className="nav-toggle">
-						<FaBars onClick={openSidebar} />
-					</button>
+					{isSidebarOpen ? (
+						<button type="button" className="nav-toggle">
+							<FaBars onClick={closeSidebar} />
+						</button>
+					) : (
+						<button type="button" className="nav-toggle">
+							<FaBars onClick={openSidebar} />
+						</button>
+					)}
 				</div>
 				<ul className="nav-links">
 					{links.map((link) => {
