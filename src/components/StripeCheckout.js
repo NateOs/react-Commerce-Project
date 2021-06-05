@@ -49,7 +49,14 @@ const CheckoutForm = () => {
 	};
 
 	const createPaymentIntent = async () => {
-		console.log("Hello from Stripe Checkout");
+		try {
+			const data = await axios.post(
+				"/.netlify/functions/create-payment-intent",
+				JSON.stringify({ cart, shipping_fee, total_amount }),
+			);
+		} catch (error) {
+			console.log(`Error message : ${error}`);
+		}
 	};
 
 	useEffect(() => {
@@ -80,7 +87,7 @@ const CheckoutForm = () => {
 					</div>
 				)}
 				{/* Show success message upon completion */}
-				<p className={succeeded ? "result-message" : "result-message-hidden"}>
+				<p className={succeeded ? "result-message" : "hidden"}>
 					Payment succeeded, see the result in your{" "}
 					<a href={"https://dashboard.stripe.com/test/payments"}>
 						Stripe Dashboard
