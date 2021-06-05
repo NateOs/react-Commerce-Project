@@ -48,14 +48,18 @@ const CheckoutForm = () => {
 		},
 	};
 
+	// making post req to /create-payment-intent endpoint, payload is shoppingData
 	const createPaymentIntent = async () => {
 		try {
-			const data = await axios.post(
+			const { data } = await axios.post(
+				//response is destrutured right here, clientSecret is returned
 				"/.netlify/functions/create-payment-intent",
 				JSON.stringify({ cart, shipping_fee, total_amount }),
 			);
+			// setting clientSecret on State
+			setClientSecret(data.clientSecret);
 		} catch (error) {
-			console.log(`Error message : ${error}`);
+			console.log(error.response);
 		}
 	};
 
