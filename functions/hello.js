@@ -1,11 +1,11 @@
-const items = [
-	{id:1, name:'nathan'},
-	{id:2, name:'janet'},
-]
+//endpoint served: // domain/.netlify/functions/hello
+
 
 exports.handler = async function (event, context) {
+console.log(event);
+
 	return {
 		statusCode: 200,
-		body: JSON.stringify(items),
+		body: 'payment intent',
 	};
 };
